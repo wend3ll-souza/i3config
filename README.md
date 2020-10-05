@@ -1,3 +1,7 @@
 # i3config
 
-Minha configuração para i3-gaps
+Configuração i3wm/i3-gaps
+
+# Aplicativos utilizados 
+
+Detalhes a ser adicionados ... 

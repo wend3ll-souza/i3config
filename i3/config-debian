@@ -24,8 +24,8 @@ font pango:monospace 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id xss-lock --transfer-sleep-lock -- /bin/lock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- /bin/lock
 
 
 
@@ -192,35 +192,39 @@ bindsym $mod+r mode "resize"
 
 ##Polybar
 
-exec --no-startup-id polybar -r topbar &
+#exec --no-startup-id polybar-git -r topbar &
 
 
-#bar {
-#position top	
+bar {
+	
 #font xft: monospace 9
-        #status_command i3status
-#	 status_command i3blocks
-#colors {
-#        background #000000
-#        statusline #ffffff
-#
-#        focused_workspace  #ffffff #285577
-#        active_workspace   #ffffff #333333
-#        inactive_workspace #888888 #222222
-#        urgent_workspace   #ffffff #900000
-#    }
-#}
+font pango:Droid Sans, Ioicons, FontAwesome 8
+#	tray_output yes
+        status_command i3status
+	# status_command i3blocks
+colors {
+        background #000000
+        statusline #ceecee
+	separator #fefefe
+        focused_workspace  #ffffff #285577
+        active_workspace   #ffffff #333333
+        inactive_workspace #888888 #222222
+        urgent_workspace   #ffffff #900000
+    }
+}
 
 ## i3-GAPS
-for_window [class="^.*"] border pixel 2
-gaps inner 10
-gaps outer 10
-gaps bottom -2 
-gaps top 12
-gaps left -3
-gaps right -3
+for_window [class="."] border pixel 2
+#gaps inner 5
+#gaps outer 5
+#gaps bottom -2 
+#gaps top 12
+#gaps left -3
+#gaps right -3
 #gaps horizontal 0
 #gaps vertical 0
+
+
 ##tap 
 
 ##bordercolor##
@@ -232,22 +236,23 @@ client.focused #0000ff #0d0543 #ffffff #0000ff #0000ff
 #client.placeholder #ffffff #ffffff #ffffff #ffffff #ffffff
 
 
-exec --no-startup-id "xinput set-prop 12 299 1"
-
+#exec --no-startup-id "xinput set-prop 12 301 1"
+exec --no-startup-id "xinput set-prop 12 285 1"
 ## teclado br 
 
-exec --no-startup-id "setxkbmap br"
+exec --no-startup-id setxkbmap br
 
 ##wallpaper
 
-exec --no-startup-id ~/scripts/wallpaper/wallpaper 
+#exec --no-startup-id feh --bg-scale ~/Imagens/wallpapers/arch.jpg 
+exec --no-startup-id /home/davous/scripts/wallpaper/wallpaper
 
 ##termOpacity
 #exec --no-startup-id xcompmgr &
 
-#exec --no-startup-id compton&
+exec --no-startup-id compton&
 
-exec --no-startup-id picom &
+#exec --no-startup-id picom &
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20; 
@@ -256,18 +261,18 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20;
 ##clipboard 
 
 
-exec --no-startup-id "gpaste-client start" 
+#exec --no-startup-id "gpaste-client start" 
+
+exec --no-startup-id copyq &
 
 
 ##goldenDict
 
 exec --no-startup-id goldendict
 
-
-
 ###APPbindsym 
 
-bindsym $mod+Ctrl+p exec protonmail
+bindsym $mod+Ctrl+p exec protonmail-desktop-unofficial
 
 bindsym $mod+n exec firefox
 bindsym $mod+Shift+n exec chromium 
@@ -275,12 +280,12 @@ bindsym $mod+Ctrl+n exec simplenote
 
 bindsym $mod+m exec spotify
 bindsym $mod+Shift+m exec musixmatch
-bindsym $mod+c exec gpaste-client ui 
+bindsym $mod+c exec copyq toggle 
 
 bindsym $mod+Shift+i exec inkscape 
 bindsym $mod+Shift+g exec gimp 
 
-bindsym $mod+Shift+w exec whatsapp
+bindsym $mod+Shift+w exec whatsdesk
 
 bindsym $mod+Shift+s exec slack 
 
@@ -292,19 +297,40 @@ bindsym Print exec screenShotFS
 #exec xautolock -time 10 -locker /bin/lock
 
 #atalho para screenlock
-bindsym $mod+Control+l exec lock 
-
+bindsym $mod+Control+l exec i3lock-fancy 
 bindsym $mod+Ctrl+Delete exec shutdown now
-bindsym $mod+Ctrl+s exec sublime &
+#bindsym $mod+Ctrl+s exec sublime &
 
 
 #start
 
-exec --no-startup-id lock
-
-
-
-
-
+#exec --no-startup-id i3lock-fancy
 
 bindsym $mod+Ctrl+c exec code
+
+#exec --no-startup-id twomoff
+
+bindsym $mod+x exec evince &
+bindsym $mod+shift+v  exec vlc &
+bindsym $mod+Shift+y exec mgba-qt
+
+exec --no-startup-id xfce4-panel &
+
+
+# Enable/disable caps mode
+mode "caps" {
+        bindsym Caps_Lock mode "default"
+}
+bindsym Caps_Lock mode "caps"
+
+# Enable/disable numeric keyboard 
+mode "num" {
+        bindsym Num_Lock mode "default"
+}
+bindsym Num_Lock mode "num"
+
+
+
+bindsym $mod+Shift+t exec thunderbird
+bindsym $mod+b exec gnome-boxes
+bindsym $mod+t exec trybe
