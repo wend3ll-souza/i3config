@@ -1,9 +1,0 @@
-#!/bin/sh
-
-#scrot /tmp/screenshot.png
-
-#convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
-#i3lock -k -i /tmp/screenshotblur.png
-#rm /tmp/*.png
-
-i3lock -k -i ~/imagens/wallpapers/gNUFloat.png

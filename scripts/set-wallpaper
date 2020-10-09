@@ -1,0 +1,21 @@
+#!/bin/bash
+
+## ler readme para tudo funcionar bem
+
+##abrindo o diretório
+cd ~/Imagens/.wallpaper/imagens
+
+##listando e mostrando conteudo
+ls -1
+echo
+echo "escreva o nome do wallpaper desejado"
+##lendo nome e salvando na variavel temporaria wallpaper
+read wallpaper
+
+##Consolidando wallpaper
+feh --bg-scale $wallpaper
+
+##
+echo   "feh --bg-scale ~/.wallpaper/imagens/$wallpaper" > ~/.wallpaper/wallpaper
+
+

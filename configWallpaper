@@ -1,0 +1,12 @@
+#!/bin/bash
+
+##É preciso criar alguns diretorios para tudo funcionar bem
+
+mkdir ~/.wallpaper
+
+mkdir ~/.wallpaper/imagens
+
+touch ~/.wallpaper/wallpaper
+
+chmod +x ~/.wallpaper/wallpaper
+

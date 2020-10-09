@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#*************************#
+#  _               _      #
+# | |    ___   ___| | __  #
+# | |   / _ \ / __| |/ /  #
+# | |__| (_) | (__|   <   #
+# |_____\___/ \___|_|\_\  #
+#                         #
+#**************************
+
+## Bloqueio de tela com blur
+
+## Usar i3lock-color
+
+## Cria diretorio temporario para screenShot
+mkdir /tmp/screenShot
+
+## Cria um .png screenShot em /tmp/
+scrot /tmp/screenShot/screenshot.png
+
+## Adiciona blur a imagem
+convert /tmp/screenShot/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+
+## Inicia o lock
+i3lock -k -i /tmp/screenShot/screenshotblur.png
+
+## Preparando para proximo lock
+rm /tmp/ScreenShot/*.png
+rmdir /tmp/ScreenShot
